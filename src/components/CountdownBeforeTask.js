@@ -13,9 +13,20 @@ export default class CountdownBeforeTask extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{
+                position: 'relative',
+                height: '80vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                animation: 'fadeIn 0.4s ease-in-out'
+            }}>
                 { this.state.showStartButton
-                    ? <div className="countdown-centered-button">
+                    ? <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}>
                         <Button
                             variant="contained"
                             size="large"
@@ -38,7 +49,13 @@ export default class CountdownBeforeTask extends React.Component {
                             {i18next.t('button.start')}
                         </Button>
                     </div>
-                    : <div className="countdown-centered-number">
+                    : <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: '80px',
+                        fontWeight: 'bold'
+                    }}>
                         <div className="text-center countdown">
                             {this.state.countdownTimer}
                         </div>

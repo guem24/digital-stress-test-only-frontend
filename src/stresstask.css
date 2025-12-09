@@ -170,6 +170,8 @@ section.inputSection {
     left: 50% !important;;
     margin-top: -50px !important;;
     margin-left: -90px !important;;
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
 }
 
 .countdown-centered-number {
@@ -178,6 +180,8 @@ section.inputSection {
     left: 50% !important;;
     margin-top: -110px !important;;
     margin-left: -40px !important;;
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
 }
 
 @media screen and (max-width: 350px) {
