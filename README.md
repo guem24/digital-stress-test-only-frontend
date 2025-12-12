@@ -10,13 +10,13 @@ Digital Stress Test is a web-based application that implements a standardized st
 
 ## Features
 
-- 📱 **Mobile-first design** - Optimized for smartphone use
-- 🧮 **Cognitive tasks** - Math problem solving under time pressure
-- 🎤 **Speech tasks** - Voice recording and analysis
-- 📊 **Performance feedback** - Real-time results visualization
-- 🌐 **Multilingual** - German and English support (i18next)
-- 🔒 **Privacy-focused** - Optional data collection, configurable logging
-- 📹 **Camera/Mic access** - For video analysis (optional)
+-  **Mobile-first design** - Optimized for smartphone use
+-  **Cognitive tasks** - Math problem solving under time pressure
+-  **Speech tasks** - Voice recording and analysis
+-  **Performance feedback** - Real-time results visualization
+-  **Multilingual** - German and English support (i18next)
+-  **Privacy-focused** - Optional data collection, configurable logging
+-  **Camera/Mic access** - For video analysis (optional)
 
 ## Quick Start
 
@@ -214,4 +214,4 @@ doi: [10.2196/32280](https://dx.doi.org/10.2196/32280)
 
 ---
 
-**Built with ❤️ for research**
+**Built with <3 for research**

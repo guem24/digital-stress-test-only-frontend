@@ -41,7 +41,7 @@ class NumberInputField extends React.Component {
 
     render() {
         return (
-            <div className='container'>
+            <div className='container number-input-container'>
                 <div className='row align-items-end text-center'>
                     <div className='col-md-12'>
                         <div className='row'>

@@ -14,19 +14,17 @@
     "navbar": "Digital Health Studies",
     "header": "Willkommen.",
     "text1": "Hier beginnt Ihr kognitiver Leistungstest.",
-    "title": "Verhaltensanalyse bei einem kognitiv-sprachlichen Belastungstest",
+    "title": "Wissenschaftliche Analyse bei einem kognitiv-sprachlichen Belastungstest",
     "text2": "Mit Ihrer Teilnahme unterstützen Sie uns, individuelle Belastbarkeit besser zu verstehen. Deine Videodaten werden anonymisiert gespeichert.",
     "footer": "Diese Studie wurde am Digital-Health-Center des Hasso-Plattner-Instituts, an der Universität Potsdam und der Universität Bielefeld entwickelt.",
     "button": "Hier gehts los!",
-    "language": "DE",
-    "noLogging": "Dies ist eine Präsentationsvariante. Es werden keine Daten dauerhaft gespeichert oder ausgewertet."
+    "language": "DE"
   },
   "study_introduction_0": {
     "header": "Worum geht es?",
-    "text0": "Wir forschen an digitalen Methoden zur Einschätzung der individuellen Belastbarkeit.",
+    "text0": "Wir forschen an digitalen Methoden zur Einschätzung der individuellen Leistung.",
     "text1": "In dieser Studie vergleichen wir dafür verschiedene Varianten eines neuen Smartphone-Tests.",
-    "text2": "Wir ordnen Sie zufällig einer der Test-Varianten zu.",
-    "text3": "HINWEIS: Dies ist eine Präsentations-Variante und dient lediglich dem Ausprobieren. Es werden KEINE Daten gespeichert. Die Datenschutzerklärung trifft für diese Version nicht zu."
+    "text2": "Wir ordnen Sie zufällig einer der Test-Varianten zu."
   },
   "checking_participation":{
     "question": "Haben Sie bereits an der Studie teilgenommen?",
@@ -152,7 +150,7 @@
     "yes": "Ja",
     "no": "Nein",
     "alert": "Video und Ton müssen funktionieren. Sie müssen das Kalibrierungs-Video erneut aufnehmen.",
-    "text0": "Für die Analyse Ihrer individuellen Belastbarkeit wird Ihr Verhalten gefilmt.",
+    "text0": "Für die Analyse Ihrer individuellen Leistung wird Ihr Verhalten gefilmt.",
     "text1": "Ihre Gesichts- und Augenbewegungen sowie Ihre Stimme werden dabei durch einen neu entwickelten Algorithmus analysiert.",
     "text2": "Für die Kalibrierung und Testung Ihres Smartphones ist es notwendig, ein kurzes Test-Video aufzunehmen.",
     "text3": "Achten Sie darauf, dass Ihr Gesicht vollständig sichtbar ist und lesen Sie folgenden Text vor:",
@@ -353,8 +351,7 @@
       "text_2": "Die beiden Tests dienen also nicht zur Einschätzung Ihrer Leistungsfähigkeit oder Belastbarkeit.",
       "text_3": "Es gab keinen Algorithmus, der Ihre Stimme oder Ihr Gesicht analysiert hat.",
       "text_4": "Die Schwierigkeit der Mathe-Aufgaben wurde so angepasst, dass Sie möglichst überfordert wurden.",
-      "text_5": "Die Ergebnisse Ihrer \"Vergleichsgruppe\" sind frei erfunden.",
-      "noLogging": "HINWEIS: Dies war eine Präsentations-Variante und diente lediglich dem Ausprobieren. Es wurden KEINE Daten gespeichert. Die Datenschutzerklärung trifft für diese Version nicht zu."
+      "text_5": "Die Ergebnisse Ihrer \"Vergleichsgruppe\" sind frei erfunden."
     },
     "questionnaire": {
       "finish": "Daten speichern",

@@ -12,8 +12,9 @@ body {
 }
 
 section.videoSection{
-    height: 27vh;
+    height: 25vh;
     width: 100%;
+    overflow: hidden;
 }
 
 
@@ -50,15 +51,17 @@ tr:nth-child(even) {background-color: #f5f5f5;}
 }
 
 section.taskSection {
-    height: 19vh;
+    height: 18vh;
     width: 100%;
     border: 1px black;
 }
 
 section.inputSection {
-    height: 34vh;
+    height: 36vh;
     width: 100%;
     bottom: 0;
+    overflow: visible;
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 
@@ -601,15 +604,23 @@ section.inputSection {
     font-size: 100px;
 }
 
+.number-input-container {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
 .number-button {
     width: 25vw;
     outline: none;
     padding: 0;
     height: 7vh;
+    min-height: 45px;
+    max-height: 60px;
     border-radius: 20px;
     bottom: 0;
     color: white;
     border:1px solid transparent;
+    margin-bottom: 2px;
 }
 
 .number-button:focus{
