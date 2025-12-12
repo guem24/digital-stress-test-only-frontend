@@ -155,13 +155,23 @@ class WebcamCapture extends React.Component {
                 break;
         }
 
+        const webcamStyle = this.props.studyPage === 'mathTask' ? {
+            maxWidth: '100%',
+            maxHeight: '25vh',
+            width: 'auto',
+            height: 'auto',
+            objectFit: 'contain'
+        } : {};
+
         return (
             <Webcam
                 audio={true}
-                height={this.props.webcamSize}
+                height={this.props.studyPage === 'mathTask' ? undefined : this.props.webcamSize}
+                width={this.props.studyPage === 'mathTask' ? undefined : undefined}
                 videoConstraints={constraints}
                 className={borderVariable}
                 ref={this.webcamRef}
+                style={webcamStyle}
                 onUserMedia={() => {
                     if (this.props.studyPage === "introduction" || this.props.studyPage === 'speechTask') {
                         this.props.webcamCallback(this.webcamRef.current.stream);

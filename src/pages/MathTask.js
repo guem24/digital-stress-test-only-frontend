@@ -387,7 +387,7 @@ export default class MathTask extends React.Component {
                 <section className="videoSection">
                     {this.props.cancelDialogIsOpen
                         ? <div/>
-                        : <div className="row justify-content-center">
+                        : <div className="row justify-content-center video-wrapper">
                             <div className="z-index">
                                 <VideocamIcon fontSize={'large'}/>
                                 <span className="dot-red"/>
@@ -399,7 +399,7 @@ export default class MathTask extends React.Component {
                                 markVideoAsUploading={this.props.markVideoAsUploading}
                                 markVideoAsUploaded={this.props.markVideoAsUploaded}
                                 videoCounter={this.state.videoCounter}
-                                webcamSize={calculateHeightInPx(27)}
+                                webcamSize={calculateHeightInPx(25)}
                             />
                         </div>
                     }

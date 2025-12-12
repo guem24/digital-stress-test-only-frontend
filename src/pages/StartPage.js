@@ -92,11 +92,7 @@ export default class StartPage extends React.Component {
                             <div className="row index-bottom-row text-center justify-content-center">
                                 <div className="container-fluid">
                                     <div className="index-body-text2">
-                                        {
-                                            process.env.REACT_APP_LOGGING === "true"
-                                            ? i18next.t('startPage.text2')
-                                            : i18next.t('startPage.noLogging')
-                                        }
+                                        {i18next.t('startPage.text2')}
                                     </div>
                                     <div className="p-2">
                                         <Button
