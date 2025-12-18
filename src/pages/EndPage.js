@@ -12,6 +12,7 @@ export default class EndPage extends React.Component{
         this.state = {
             showCircularProgress: false,
         }
+        this.videoRef = React.createRef();
     }
 
     componentDidMount() {
@@ -20,7 +21,14 @@ export default class EndPage extends React.Component{
         this.props.uploadFinalData(config, true);
         this.setState({ showCircularProgress: true });
         setTimeout(() => {
-            this.setState({ showCircularProgress: false });
+            this.setState({ showCircularProgress: false }, () => {
+                // Force video to play after spinner disappears
+                if (this.videoRef.current) {
+                    this.videoRef.current.play().catch(err => {
+                        console.log("Video autoplay prevented:", err);
+                    });
+                }
+            });
         }, 2000);
     }
 
@@ -49,11 +57,13 @@ export default class EndPage extends React.Component{
                                                 <div className="row justify-content-center mb-4">
                                                     <div className="col-12 col-md-8 col-lg-6">
                                                         <video
+                                                            ref={this.videoRef}
                                                             autoPlay
                                                             loop
                                                             muted
                                                             playsInline
                                                             preload="auto"
+                                                            controls={false}
                                                             style={{
                                                                 width: '100%',
                                                                 maxWidth: '400px',
@@ -62,6 +72,12 @@ export default class EndPage extends React.Component{
                                                                 margin: '0 auto'
                                                             }}
                                                             src={`${process.env.PUBLIC_URL}/switch_tab.mp4`}
+                                                            onLoadedData={(e) => {
+                                                                // Ensure video plays when loaded
+                                                                e.target.play().catch(err => {
+                                                                    console.log("Initial autoplay prevented:", err);
+                                                                });
+                                                            }}
                                                         >
                                                             Your browser does not support the video tag.
                                                         </video>
