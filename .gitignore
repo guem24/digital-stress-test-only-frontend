@@ -94,3 +94,6 @@ Desktop.ini
 *.mp4
 *.webm
 *.mov
+
+# Exception: Allow specific public assets
+!public/switch_tab.mp4
