@@ -37,13 +37,19 @@ section.videoSection{
     object-fit: contain;
     display: block;
     margin: 0 auto;
+    /* Performance optimizations */
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 /* Safari-specific fixes */
 @supports (-webkit-appearance: none) {
     .video-wrapper video {
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
     }
 }
 

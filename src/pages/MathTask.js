@@ -159,7 +159,7 @@ export default class MathTask extends React.Component {
                             });
                             this.updateTimer();
                         },
-                        10
+                        50  // Increased from 10ms to 50ms for better performance (still smooth)
                     );
                 } else {
                     if (this.noAnswerStreak >= 5) {

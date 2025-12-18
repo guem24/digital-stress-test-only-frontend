@@ -1,11 +1,19 @@
 import React from 'react';
 import Webcam from "react-webcam";
 
-// Put variables in global scope to make them available to the browser console.
+// Optimized video constraints for better performance
 const constraints = window.constraints = {
-    audio: true,
-    video: true,
-    facingMode: "user"
+    audio: {
+        echoCancellation: true,
+        noiseSuppression: true,
+        sampleRate: 44100
+    },
+    video: {
+        facingMode: "user",
+        width: { ideal: 640, max: 1280 },
+        height: { ideal: 480, max: 720 },
+        frameRate: { ideal: 24, max: 30 }
+    }
 };
 
 class WebcamCapture extends React.Component {
@@ -21,6 +29,13 @@ class WebcamCapture extends React.Component {
 
         this.startRecording = this.startRecording.bind(this);
         this.stopRecording = this.stopRecording.bind(this);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        // Prevent unnecessary re-renders for better performance
+        return this.props.videoCounter !== nextProps.videoCounter ||
+               this.props.videoFeedbackState !== nextProps.videoFeedbackState ||
+               this.state.mimeType !== nextState.mimeType;
     }
 
     /**
@@ -58,10 +73,11 @@ class WebcamCapture extends React.Component {
      * @returns {Promise<void>}
      */
     async createMediaRecorder(stream) {
+        // Reduced bitrates for better performance on mobile devices
         let options = {
             mimeType: 'video/mp4',
-            audioBitsPerSecond : 200000,
-            videoBitsPerSecond : 500000
+            audioBitsPerSecond: 128000,
+            videoBitsPerSecond: 300000  // Reduced from 500000 for better performance
         };
         try {
             await this.createMediaRecorderWithOptions(stream, options)
@@ -69,8 +85,8 @@ class WebcamCapture extends React.Component {
             try {
                 let options = {
                     mimeType: 'video/webm',
-                    audioBitsPerSecond : 200000,
-                    videoBitsPerSecond : 500000
+                    audioBitsPerSecond: 128000,
+                    videoBitsPerSecond: 300000  // Reduced from 500000 for better performance
                 };
                 await this.createMediaRecorderWithOptions(stream, options)
             } catch (e1) {
@@ -89,12 +105,16 @@ class WebcamCapture extends React.Component {
     async createMediaRecorderWithOptions(stream, options) {
         this.mediaStreamRecorder = await new MediaRecorder(stream, options);
         this.mediaStreamRecorder.ondataavailable = event => {
-            this.recordedChunks.push(event.data);
+            if (event.data && event.data.size > 0) {
+                this.recordedChunks.push(event.data);
+            }
         }
         this.mediaStreamRecorder.onstop = event => {
             this.uploadVideo();
         }
-        this.mediaStreamRecorder.onerror = event => console.log(event);
+        this.mediaStreamRecorder.onerror = event => {
+            console.error("MediaRecorder error:", event);
+        };
         this.setState({
             mimeType: this.mediaStreamRecorder.mimeType
         })
@@ -107,15 +127,16 @@ class WebcamCapture extends React.Component {
     async startRecording() {
         try {
             await this.createMediaRecorder(this.webcamRef.current.stream);
-            await this.mediaStreamRecorder.start();
+            // Start recording with timeslice for better memory management
+            await this.mediaStreamRecorder.start(1000); // Record in 1-second chunks
             if (this.props.studyPage === 'introduction') {
                 this.setState({
                     timeoutID: setTimeout(() => this.stopRecording(), 30000)
                 })
             }
         } catch (err) {
-            console.log(err);
-            window.alert(err)
+            console.error("Recording start error:", err);
+            window.alert("Unable to start recording. Please check camera permissions.")
         }
     }
 

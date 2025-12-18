@@ -62,14 +62,16 @@ export default class EndPage extends React.Component{
                                                             loop
                                                             muted
                                                             playsInline
-                                                            preload="auto"
+                                                            preload="metadata"
                                                             controls={false}
                                                             style={{
                                                                 width: '100%',
                                                                 maxWidth: '400px',
                                                                 borderRadius: '8px',
                                                                 display: 'block',
-                                                                margin: '0 auto'
+                                                                margin: '0 auto',
+                                                                transform: 'translateZ(0)',
+                                                                backfaceVisibility: 'hidden'
                                                             }}
                                                             src={`${process.env.PUBLIC_URL}/switch_tab.mp4`}
                                                             onLoadedData={(e) => {

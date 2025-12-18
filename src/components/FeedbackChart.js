@@ -4,6 +4,12 @@ import i18next from "i18next";
 
 class FeedbackChart extends React.Component {
 
+    shouldComponentUpdate(nextProps) {
+        // Only update if scores have actually changed
+        return this.props.userScore !== nextProps.userScore ||
+               this.props.averageScore !== nextProps.averageScore;
+    }
+
     render() {
         return (
             <HorizontalBar
@@ -20,7 +26,7 @@ class FeedbackChart extends React.Component {
                             }]
                     }}
                 options={{
-                    animation: {duration:1000},
+                    animation: {duration: 300},  // Reduced from 1000ms for better performance
                     title: {
                         display: false,
                         text: 'Your score compaired to other users: ',
