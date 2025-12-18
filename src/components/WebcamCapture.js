@@ -155,23 +155,45 @@ class WebcamCapture extends React.Component {
                 break;
         }
 
-        const webcamStyle = this.props.studyPage === 'mathTask' ? {
-            maxWidth: '100%',
-            maxHeight: '25vh',
-            width: 'auto',
-            height: 'auto',
-            objectFit: 'contain'
-        } : {};
+        const getWebcamStyle = () => {
+            if (this.props.studyPage === 'mathTask') {
+                return {
+                    maxWidth: '100%',
+                    maxHeight: '25vh',
+                    width: 'auto',
+                    height: 'auto',
+                    objectFit: 'contain'
+                };
+            }
+            if (this.props.studyPage === 'introduction') {
+                return {
+                    width: '100%',
+                    height: 'auto',
+                    maxHeight: '33vh',
+                    objectFit: 'contain'
+                };
+            }
+            return {};
+        };
+
+        const getWebcamDimensions = () => {
+            if (this.props.studyPage === 'mathTask') {
+                return { height: undefined, width: undefined };
+            }
+            return { height: this.props.webcamSize, width: undefined };
+        };
+
+        const dimensions = getWebcamDimensions();
 
         return (
             <Webcam
                 audio={true}
-                height={this.props.studyPage === 'mathTask' ? undefined : this.props.webcamSize}
-                width={this.props.studyPage === 'mathTask' ? undefined : undefined}
+                height={dimensions.height}
+                width={dimensions.width}
                 videoConstraints={constraints}
                 className={borderVariable}
                 ref={this.webcamRef}
-                style={webcamStyle}
+                style={getWebcamStyle()}
                 onUserMedia={() => {
                     if (this.props.studyPage === "introduction" || this.props.studyPage === 'speechTask') {
                         this.props.webcamCallback(this.webcamRef.current.stream);

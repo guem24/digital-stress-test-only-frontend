@@ -53,9 +53,16 @@ export default class EndPage extends React.Component{
                                                             loop
                                                             muted
                                                             playsInline
-                                                            style={{width: '100%', maxWidth: '400px', borderRadius: '8px'}}
+                                                            preload="auto"
+                                                            style={{
+                                                                width: '100%',
+                                                                maxWidth: '400px',
+                                                                borderRadius: '8px',
+                                                                display: 'block',
+                                                                margin: '0 auto'
+                                                            }}
+                                                            src={`${process.env.PUBLIC_URL}/switch_tab.mp4`}
                                                         >
-                                                            <source src={`${process.env.PUBLIC_URL}/switch_tab.mp4`} type="video/mp4" />
                                                             Your browser does not support the video tag.
                                                         </video>
                                                     </div>

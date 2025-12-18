@@ -215,7 +215,7 @@ export default class Calibration extends React.Component {
                                         webcamCallback={this.webcamCallback}
                                         onUserMediaError={this.handleCameraError}
                                         videoFeedbackState={this.state.videoFeedbackState}
-                                        webcamSize={calculateHeightInPx(27)}
+                                        webcamSize={calculateHeightInPx(33)}
                                     />
                                 </div>
                                 {this.state.hasUserMedia
