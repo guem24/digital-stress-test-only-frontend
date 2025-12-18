@@ -4,8 +4,6 @@ import {CircularProgress} from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
 import Card from "@material-ui/core/Card";
 import i18next from "i18next";
-import sosci_logo from "../img/sosci_logo.jpeg";
-import switch_tab_video from "../img/switch_tab.mp4";
 
 
 export default class EndPage extends React.Component{
@@ -57,7 +55,7 @@ export default class EndPage extends React.Component{
                                                             playsInline
                                                             style={{width: '100%', maxWidth: '400px', borderRadius: '8px'}}
                                                         >
-                                                            <source src={switch_tab_video} type="video/mp4" />
+                                                            <source src={`${process.env.PUBLIC_URL}/switch_tab.mp4`} type="video/mp4" />
                                                             Your browser does not support the video tag.
                                                         </video>
                                                     </div>
