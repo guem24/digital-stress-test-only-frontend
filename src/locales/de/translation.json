@@ -15,7 +15,7 @@
     "header": "Willkommen.",
     "text1": "Hier beginnt Ihr kognitiver Leistungstest.",
     "title": "Wissenschaftliche Analyse bei einem kognitiv-sprachlichen Belastungstest",
-    "text2": "Mit Ihrer Teilnahme unterstützen Sie uns, individuelle Belastbarkeit besser zu verstehen. Deine Videodaten werden anonymisiert gespeichert.",
+    "text2": "",
     "footer": "Diese Studie wurde am Digital-Health-Center des Hasso-Plattner-Instituts, an der Universität Potsdam und der Universität Bielefeld entwickelt.",
     "button": "Hier gehts los!",
     "language": "DE"
@@ -493,5 +493,10 @@
   },
   "audioAnalyzing":{
     "speak": "Bitte sprechen Sie weiter!"
+  },
+  "endPage": {
+    "saving": "Daten werden gespeichert...",
+    "saved": "Deine Daten wurden gespeichert.",
+    "switchTab": "Kehre bitte zurück zum SoSci Fragebogen."
   }
 }

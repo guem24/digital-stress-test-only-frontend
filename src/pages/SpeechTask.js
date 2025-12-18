@@ -55,6 +55,7 @@ export default class SpeechTask extends React.Component {
         };
 
         this.webcamCallback = this.webcamCallback.bind(this);
+        this.handleCameraError = this.handleCameraError.bind(this);
         this.incrementSpeechTaskStateCounter = this.incrementSpeechTaskStateCounter.bind(this);
 
         this.audioWaveWidth = calculateWidthInPx(80);
@@ -162,6 +163,18 @@ export default class SpeechTask extends React.Component {
             webcamStream: stream,
             hasUserMedia: true,
         });
+    }
+
+    handleCameraError(error) {
+        console.error("Camera error in SpeechTask:", error);
+        this.setState({
+            hasUserMedia: false,
+        });
+        // Show a user-friendly error message
+        const errorMessage = error.name === 'NotAllowedError'
+            ? "Camera access denied. Please allow camera and microphone access in your browser settings."
+            : "Unable to access camera. Please check your camera permissions and try again.";
+        window.alert(errorMessage);
     }
 
     addSpeakPause = () => {
@@ -297,6 +310,7 @@ export default class SpeechTask extends React.Component {
                                                 studyResultId={this.props.studyResultId}
                                                 videoCounter={this.state.videoCounter}
                                                 webcamCallback={this.webcamCallback}
+                                                onUserMediaError={this.handleCameraError}
                                                 webcamSize = {calculateHeightInPx(32)}
                                             />
                                         </div>

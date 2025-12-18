@@ -14,6 +14,7 @@ export default class SpeechTaskCalibration extends React.Component {
         this.state = {
             webcamStream: null,
             hasUserMedia: false,
+            cameraError: false,
 
             countDownTimer: 3,
 
@@ -24,6 +25,7 @@ export default class SpeechTaskCalibration extends React.Component {
         this.startCountdown = this.startCountdown.bind(this);
         this.changeStartExplanation = this.changeStartExplanation.bind(this);
         this.webcamCallback = this.webcamCallback.bind(this);
+        this.handleCameraError = this.handleCameraError.bind(this);
         this.audioWaveWidth = calculateWidthInPx(80);
         this.audioWaveHeight = calculateHeightInPx(15);
     }
@@ -32,7 +34,21 @@ export default class SpeechTaskCalibration extends React.Component {
         this.setState({
             webcamStream: stream,
             hasUserMedia: true,
+            cameraError: false,
         });
+    }
+
+    handleCameraError(error) {
+        console.error("Camera error in SpeechTaskCalibration:", error);
+        this.setState({
+            cameraError: true,
+            hasUserMedia: false,
+        });
+        // Show a user-friendly error message
+        const errorMessage = error.name === 'NotAllowedError'
+            ? "Camera access denied. Please allow camera and microphone access in your browser settings."
+            : "Unable to access camera. Please check your camera permissions and try again.";
+        window.alert(errorMessage);
     }
 
     startCountdown(){
@@ -125,6 +141,7 @@ export default class SpeechTaskCalibration extends React.Component {
                                 studyResultId={this.props.studyResultId}
                                 videoCounter={this.props.videoCounter}
                                 webcamCallback={this.webcamCallback}
+                                onUserMediaError={this.handleCameraError}
                                 webcamSize={calculateHeightInPx(32)}
                             />
                         </div>

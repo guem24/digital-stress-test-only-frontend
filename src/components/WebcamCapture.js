@@ -180,6 +180,15 @@ class WebcamCapture extends React.Component {
                         this.startRecording();
                     }
                 }}
+                onUserMediaError={(error) => {
+                    console.error("Camera permission error:", error);
+                    if (this.props.onUserMediaError) {
+                        this.props.onUserMediaError(error);
+                    } else {
+                        // Default error handling
+                        window.alert("Camera access denied. Please allow camera and microphone access in your browser settings and reload the page.");
+                    }
+                }}
             />
         )
     }

@@ -17,6 +17,7 @@ export default class Calibration extends React.Component {
         super(props);
         this.state = {
             hasUserMedia: false,
+            cameraError: false,
 
             videoFeedbackState: 'permission',
             videoFeedback: {
@@ -41,6 +42,7 @@ export default class Calibration extends React.Component {
         this.setVideoURL = this.setVideoURL.bind(this);
         this.webcamCallback = this.webcamCallback.bind(this);
         this.checkFormAndContinue = this.checkFormAndContinue.bind(this);
+        this.handleCameraError = this.handleCameraError.bind(this);
     }
 
     setVideoURL(blob) {
@@ -68,7 +70,21 @@ export default class Calibration extends React.Component {
         this.setState({
             webcamStream: stream,
             hasUserMedia: true,
+            cameraError: false,
         });
+    }
+
+    handleCameraError(error) {
+        console.error("Camera error in Calibration:", error);
+        this.setState({
+            cameraError: true,
+            hasUserMedia: false,
+        });
+        // Show a user-friendly error message
+        const errorMessage = error.name === 'NotAllowedError'
+            ? "Camera access denied. Please allow camera and microphone access in your browser settings."
+            : "Unable to access camera. Please check your camera permissions and try again.";
+        window.alert(errorMessage);
     }
 
     render() {
@@ -197,6 +213,7 @@ export default class Calibration extends React.Component {
                                         handleAbortDialog={this.handleAbortDialog}
                                         setVideoURL={this.setVideoURL}
                                         webcamCallback={this.webcamCallback}
+                                        onUserMediaError={this.handleCameraError}
                                         videoFeedbackState={this.state.videoFeedbackState}
                                         webcamSize={calculateHeightInPx(27)}
                                     />

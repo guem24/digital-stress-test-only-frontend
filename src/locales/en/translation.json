@@ -15,7 +15,7 @@
     "header": "Welcome.",
     "text1": "Your cognitive performance test begins here.",
     "title": "Behavior Analysis While Performing A Cognitive And Verbal Performance Test",
-    "text2": "With your participation you're supporting our research towards a better understanding of stress and resilience in daily life. Your video data will be stored anonymously.",
+    "text2": "",
     "footer": "This study was developed in cooperation with the Digital Health Center at Hasso-Plattner-Institute, the University of Potsdam and the University of Bielefeld.",
     "button": "Let's start!",
     "language": "EN"
@@ -488,6 +488,11 @@
   },
   "audioAnalyzing":{
     "speak": "Please keep on talking!"
+  },
+  "endPage": {
+    "saving": "Saving your data...",
+    "saved": "Your data has been saved.",
+    "switchTab": "Please switch back to the questionnaire tab."
   }
 }
 
